@@ -7,17 +7,16 @@ const schema = new Schema({
     type: String,
     required: true,
   },
-  description: {
+  email: {
     type: String,
     required: true,
   },
-  price: {
-    type: String,
+  date_of_birth: {
+    type: Date,
     required: true,
   },
-  seller: {
-    type: Schema.Types.ObjectId,
-    ref: 'Seller',
+  phone: {
+    type: String,
     required: true,
   },
 }, {
@@ -27,4 +26,4 @@ const schema = new Schema({
 
 schema.virtual('id').get((id) => id);
 
-module.exports = mongoose.model('Product', schema);
+module.exports = mongoose.model('Seller', schema);

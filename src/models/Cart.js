@@ -3,21 +3,12 @@ const mongoose = require('mongoose');
 const { Schema } = mongoose;
 
 const schema = new Schema({
-  name: {
-    type: String,
-    required: true,
-  },
-  description: {
-    type: String,
-    required: true,
-  },
-  price: {
-    type: String,
-    required: true,
-  },
-  seller: {
+  product: {
     type: Schema.Types.ObjectId,
-    ref: 'Seller',
+    ref: 'Product',
+  },
+  quantity: {
+    type: Number,
     required: true,
   },
 }, {
@@ -27,4 +18,4 @@ const schema = new Schema({
 
 schema.virtual('id').get((id) => id);
 
-module.exports = mongoose.model('Product', schema);
+module.exports = mongoose.model('Report', schema);
