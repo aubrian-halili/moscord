@@ -1,0 +1,407 @@
+swagger: '2.0'
+info:
+  description: >-
+    This is the Moscord Ecommerce Service.
+  version: 0.0.1
+  title: Moscord Ecommerce Swagger
+  termsOfService: 'http://swagger.io/terms/'
+  contact:
+    email: halili.aubrian@gmail.com
+  license:
+    name: Apache 2.0
+    url: 'http://www.apache.org/licenses/LICENSE-2.0.html'
+basePath: /api
+tags:
+- name: "products"
+  description: "Product"
+- name: "sellers"
+  description: "Seller"
+- name: "carts"
+  description: "Cart"
+- name: "reports"
+  description: "Report"
+schemes:
+- "https"
+- "http"
+paths:
+  /products:
+    get:
+      tags:
+      - "products"
+      summary: "Return product list"
+      description: ""
+      produces:
+      - "application/json"
+      parameters:
+      - name: "search"
+        in: "query"
+        description: "Search value that need to be considered for filter"
+        type: "string"
+      responses:
+        200:
+          description: "Successful operation"
+          schema:
+            type: "array"
+            items:
+              $ref: "#/definitions/Product"
+        400:
+          description: "Invalid input"
+    post:
+      tags:
+      - "products"
+      summary: "Create product"
+      description: ""
+      consumes:
+      - "application/json"
+      produces:
+      - "application/json"
+      parameters:
+      - in: "body"
+        name: "body"
+        description: "Product object"
+        required: true
+        schema:
+          $ref: "#/definitions/Product"
+      responses:
+        400:
+          description: "Invalid input"
+  /products/{id}:
+    get:
+      tags:
+      - "products"
+      summary: "Return product object"
+      description: ""
+      produces:
+      - "application/json"
+      parameters:
+      - name: "id"
+        in: "path"
+        description: "Product id"
+        required: true
+        type: "string"
+      responses:
+        200:
+          description: "Successful operation"
+          schema:
+            $ref: "#/definitions/Product"
+    put:
+      tags:
+      - "products"
+      summary: "Updated product"
+      description: ""
+      consumes:
+      - "application/json"
+      produces:
+      - "application/json"
+      parameters:
+      - name: "id"
+        in: "path"
+        description: "Product id"
+        required: true
+        type: "string"
+      - in: "body"
+        name: "body"
+        description: "Product object"
+        required: true
+        schema:
+          $ref: "#/definitions/Product"
+      responses:
+        200:
+          description: "Successful operation"
+          schema:
+            $ref: "#/definitions/Product"
+        404:
+          description: "Not found"
+    delete:
+      tags:
+      - "products"
+      summary: "Delete product"
+      description: ""
+      produces:
+      - "application/json"
+      parameters:
+      - name: "id"
+        in: "path"
+        description: "product id"
+        required: true
+        type: "string"
+      responses:
+        404:
+          description: "Not found"
+
+  /sellers:
+    get:
+      tags:
+      - "sellers"
+      summary: "Return seller list"
+      description: ""
+      produces:
+      - "application/json"
+      responses:
+        200:
+          description: "Successful operation"
+          schema:
+            type: "array"
+            items:
+              $ref: "#/definitions/Seller"
+        400:
+          description: "Invalid input"
+    post:
+      tags:
+      - "sellers"
+      summary: "Create seller"
+      description: ""
+      consumes:
+      - "application/json"
+      produces:
+      - "application/json"
+      parameters:
+      - in: "body"
+        name: "body"
+        description: "Seller object"
+        required: true
+        schema:
+          $ref: "#/definitions/Seller"
+      responses:
+        400:
+          description: "Invalid input"
+  /sellers/{id}:
+    get:
+      tags:
+      - "sellers"
+      summary: "Return seller object"
+      description: ""
+      produces:
+      - "application/json"
+      parameters:
+      - name: "id"
+        in: "path"
+        description: "Seller id"
+        required: true
+        type: "string"
+      responses:
+        200:
+          description: "Successful operation"
+          schema:
+            $ref: "#/definitions/Seller"
+    put:
+      tags:
+      - "sellers"
+      summary: "Updated seller"
+      description: ""
+      consumes:
+      - "application/json"
+      produces:
+      - "application/json"
+      parameters:
+      - name: "id"
+        in: "path"
+        description: "Seller id"
+        required: true
+        type: "string"
+      - in: "body"
+        name: "body"
+        description: "Seller object"
+        required: true
+        schema:
+          $ref: "#/definitions/Seller"
+      responses:
+        200:
+          description: "Successful operation"
+          schema:
+            $ref: "#/definitions/Seller"
+        404:
+          description: "Not found"
+    delete:
+      tags:
+      - "sellers"
+      summary: "Delete seller"
+      description: ""
+      produces:
+      - "application/json"
+      parameters:
+      - name: "id"
+        in: "path"
+        description: "seller id"
+        required: true
+        type: "string"
+      responses:
+        404:
+          description: "Not found"
+
+  /carts:
+    get:
+      tags:
+      - "carts"
+      summary: "Return cart list"
+      description: ""
+      produces:
+      - "application/json"
+      responses:
+        200:
+          description: "Successful operation"
+          schema:
+            type: "array"
+            items:
+              $ref: "#/definitions/Cart"
+        400:
+          description: "Invalid input"
+    post:
+      tags:
+      - "carts"
+      summary: "Create cart"
+      description: ""
+      consumes:
+      - "application/json"
+      produces:
+      - "application/json"
+      parameters:
+      - in: "body"
+        name: "body"
+        description: "Cart object"
+        required: true
+        schema:
+          $ref: "#/definitions/Cart"
+      responses:
+        400:
+          description: "Invalid input"
+  /carts/{id}:
+    get:
+      tags:
+      - "carts"
+      summary: "Return cart object"
+      description: ""
+      produces:
+      - "application/json"
+      parameters:
+      - name: "id"
+        in: "path"
+        description: "Cart id"
+        required: true
+        type: "string"
+      responses:
+        200:
+          description: "Successful operation"
+          schema:
+            $ref: "#/definitions/Cart"
+    put:
+      tags:
+      - "carts"
+      summary: "Updated cart"
+      description: ""
+      consumes:
+      - "application/json"
+      produces:
+      - "application/json"
+      parameters:
+      - name: "id"
+        in: "path"
+        description: "Cart id"
+        required: true
+        type: "string"
+      - in: "body"
+        name: "body"
+        description: "Cart object"
+        required: true
+        schema:
+          $ref: "#/definitions/Cart"
+      responses:
+        200:
+          description: "Successful operation"
+          schema:
+            $ref: "#/definitions/Cart"
+        404:
+          description: "Not found"
+    delete:
+      tags:
+      - "carts"
+      summary: "Delete cart"
+      description: ""
+      produces:
+      - "application/json"
+      parameters:
+      - name: "id"
+        in: "path"
+        description: "cart id"
+        required: true
+        type: "string"
+      responses:
+        404:
+          description: "Not found"
+
+  /reports/product:
+    get:
+      tags:
+      - "reports"
+      summary: "Return report list"
+      description: ""
+      produces:
+      - "application/json"
+      responses:
+        200:
+          description: "Successful operation"
+          schema:
+            type: "array"
+            items:
+              $ref: "#/definitions/Report"
+        400:
+          description: "Invalid input"
+
+definitions:
+  Product:
+    type: "object"
+    required:
+    - "name"
+    - "description"
+    - "price"
+    - "seller"
+    properties:
+      name:
+        type: "string"
+      description:
+        type: "string"
+      price:
+        type: "string"
+      seller:
+        type: "number"
+  Seller:
+    type: "object"
+    required:
+    - "name"
+    - "email"
+    - "date_of_birth"
+    - "phone"
+    properties:
+      name:
+        type: "string"
+      email:
+        type: "string"
+      date_of_birth:
+        type: "date"
+      phone:
+        type: "number"
+  Cart:
+    type: "object"
+    required:
+    - "product"
+    - "quantity"
+    properties:
+      product:
+        type: "string"
+      quantity:
+        type: "number"
+  Report:
+    type: "array"
+    items:
+      type: "object"
+      properties:
+        name:
+          type: "string"
+        description:
+          type: "string"
+        price:
+          type: "string"
+        seller:
+          type: "string"
+        cartCount:
+          type: "number"
