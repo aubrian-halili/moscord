@@ -1,0 +1,6 @@
+service: moscord-ecomm
+
+runtime: nodejs10
+
+includes:
+- env_variable.yaml

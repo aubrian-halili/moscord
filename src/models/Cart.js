@@ -18,4 +18,4 @@ const schema = new Schema({
 
 schema.virtual('id').get((id) => id);
 
-module.exports = mongoose.model('Report', schema);
+module.exports = mongoose.model('Cart', schema);

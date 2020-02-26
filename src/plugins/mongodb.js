@@ -29,6 +29,7 @@ if (username && password) {
 }
 mongoose.connect(uri, options)
   .catch((err) => logger.error(err.message));
+mongoose.set('debug', true);
 
 // Get the default connection
 const { connection } = mongoose;

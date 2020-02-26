@@ -10,7 +10,6 @@ router.get('/', asyncHandler(async (req, res) => {
   const { search: searchKey } = req.query;
 
   if (searchKey) {
-    var temp = await Product.listIndexes();
     data = await Product.find({ $text: { $search: searchKey } });
   } else {
     data = await Product.find();
