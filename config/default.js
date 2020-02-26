@@ -4,7 +4,7 @@ module.exports = {
   },
   MongoDB: {
     database: 'moscord-ecomm',
-    host: '35.194.255.188',
+    host: 'localhost',
     port: 27017,
     username: 'production',
     password: 'production',

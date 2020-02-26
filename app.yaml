@@ -1,6 +1,6 @@
-service: moscord-ecomm
+service: default
 
 runtime: nodejs10
 
-includes:
-- env_variable.yaml
+env_variables:
+  NODE_ENV: "staging"
