@@ -6,7 +6,15 @@ const { asyncHandler } = require('common/util');
 const router = express.Router();
 
 router.get('/', asyncHandler(async (req, res) => {
-  const data = await Product.find();
+  let data = [];
+  const { search: searchKey } = req.query;
+
+  if (searchKey) {
+    var temp = await Product.listIndexes();
+    data = await Product.find({ $text: { $search: searchKey } });
+  } else {
+    data = await Product.find();
+  }
   res.json(data);
 }));
 

@@ -22,9 +22,11 @@ const schema = new Schema({
   },
 }, {
   timestamps: true,
+  autoIndex: true,
   toJSON: { virtuals: true },
 });
 
+schema.index({ name: 1, description: 1 });
 schema.virtual('id').get((id) => id);
 
 module.exports = mongoose.model('Product', schema);

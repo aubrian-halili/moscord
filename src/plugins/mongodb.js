@@ -16,8 +16,6 @@ const options = {
   useUnifiedTopology: true,
   useCreateIndex: true,
   autoIndex: false,
-  reconnectTries: Number.MAX_VALUE,
-  reconnectInterval: 500,
   poolSize: 10,
   bufferCommands: false,
   bufferMaxEntries: 0,
